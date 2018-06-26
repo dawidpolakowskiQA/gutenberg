@@ -210,7 +210,7 @@
 	 * Block outline layout
 	 */
 
-	 .editor-block-list__block-edit {
+	.editor-block-list__block-edit {
 		position: relative;
 
 		&:before {
@@ -874,17 +874,17 @@
 			right: auto;
 			box-shadow: none;
 
-			// IE11 does not support `position: sticky`.
-			@supports ( position: sticky ) {
-				position: sticky;
-			}
-
 			// Move the block toolbar out of the flow using translate. 
 			transform: translateY( -$block-toolbar-height -$block-padding -$border-width );
 
-			// Compensate for translate, so the sticky sticks to the top.
-			top: $block-toolbar-height + $block-padding;
+			// IE11 does not support `position: sticky`.
+			@supports ( position: sticky ) {
+				position: sticky;
 
+				// Compensate for translate, so the sticky sticks to the top.
+				top: $block-toolbar-height + $block-padding;
+			}
+			
 			// This is an important one. Because the toolbar is sticky, it's part of the flow.
 			// It behaves as relative, in other words, until it reaches an edge and then behaves as fixed.
 			// But by applying a float, we take it out of this flow. The benefit is that we don't need to compensate for margins.
